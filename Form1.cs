@@ -26,12 +26,26 @@ namespace _06
             // TODO: данная строка кода позволяет загрузить данные в таблицу "kvartirsDataSet.Kvartirs1". При необходимости она может быть перемещена или удалена.
            //this.kvartirs1TableAdapter.Fill(this.kvartirsDataSet.Kvartirs1);
            kvartirs1BindingSource.DataSource = db.Kvartirs1.ToList();
-
+           
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+
+            form2.db = db;
+
+            DialogResult dr = form2.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                kvartirs1BindingSource.DataSource = db.Kvartirs1.ToList();
+            }
         }
     }
 }
