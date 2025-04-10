@@ -15,6 +15,7 @@ namespace _06
     {
         public Model1 db { get; set; }
 
+
         public Form2()
         {
             InitializeComponent();
@@ -69,6 +70,8 @@ namespace _06
 
             }
         }
+
+        
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {

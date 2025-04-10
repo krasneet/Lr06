@@ -47,5 +47,44 @@ namespace _06
                 kvartirs1BindingSource.DataSource = db.Kvartirs1.ToList();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form3 frm = new Form3();
+
+            Kvartirs1 kvartirs1 = (Kvartirs1)kvartirs1BindingSource.Current;
+            frm.db = db;
+            frm.kvartirs1 = kvartirs1;
+
+            DialogResult dr = frm.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                kvartirs1BindingSource.DataSource = db.Kvartirs1.ToList();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Kvartirs1 kvartirs1 = (Kvartirs1)kvartirs1BindingSource.Current;
+
+            DialogResult dr = MessageBox.Show("ВЫ дествительно хотите удалить роль - " +
+                kvartirs1.ID.ToString(), "Удаление роли", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                db.Kvartirs1.Remove(kvartirs1);
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)  
+                { 
+                    MessageBox.Show(ex.Message);
+                }
+                kvartirs1BindingSource.DataSource = db.Kvartirs1.ToList();
+            }
+        }
     }
 }
